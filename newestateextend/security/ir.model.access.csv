@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+newestateextend.access_lease_estate_property,access_lease_estate_property,newestateextend.model_lease_estate_property,base.group_user,1,1,1,1
+newestateextend.access_lease,access_lease,newestateextend.model_lease,base.group_user,1,1,1,1
+
+

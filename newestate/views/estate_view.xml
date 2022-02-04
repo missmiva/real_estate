@@ -1,0 +1,395 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+  <record id="estate_data" model="ir.ui.view">
+    <field name="name">estate properties</field>
+    <field name="model">estate.properties</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="state" decoration-success="state=='sold'" decoration-danger="state=='cancel'"/>
+        <field name="bedrom"/>
+        <field name="postcode"/>
+        <field name="date_availability"/>
+        <field name="property_tag_id" widget="many2many_tags" options="{'color_field':'color'}"/>
+        <field name="expected_price"/>
+      </tree>
+    </field>
+  </record>
+
+   <!-- <record id="lease_data" model="ir.ui.view">
+    <field name="name">Lease property</field>
+    <field name="model">lease.property</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="lease_duration"/>
+        <field name="lease_rent"/>
+        <field name="lease_date"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="lease_property_form" model="ir.ui.view">
+    <field name="name">lease Property form</field>
+    <field name="model">lease.property</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          
+          <group>
+            <group>
+              <field name="lease_duration"/>
+              <field name="name"/>
+            </group>
+            <group>
+              <field name="lease_date"/>
+              
+            </group>
+          </group>
+          <notebook>
+            <page string="Description">
+              <group>
+                <field name="description"/>
+              </group>
+            </page>
+            <page string="Property Details">
+              <group>
+                <field name="bedrom"/>
+                
+              </group>
+
+              <group>
+                <field name="garage"/>
+                <field name="facades"/>
+                <field name="garden"/>
+                <field name="garden_orientation"/>
+              </group>
+            </page>
+            
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record> -->
+
+  <record id="estate_property_type_tree" model="ir.ui.view">
+    <field name="name">estate property type Name</field>
+    <field name="model">property.type</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name= "offers"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="estate_property_form" model="ir.ui.view">
+    <field name="name">estate property</field>
+    <field name="model">estate.properties</field>
+    <field name="arch" type="xml">
+      <form>
+        <header>
+          <button name="action_sold" type="object" string="Sold" attrs="{'invisible': [('state','=', 'sold')]}"/>
+          <button name="action_cancel" type="object" string="Cancel" ttrs="{'invisible': [('state','=', 'cancel')]}"/>
+          <field name="state" widget="statusbar"/>
+        </header>
+        <sheet>
+          <group>
+            <field name="name"/>
+          </group>
+          <group>
+            <group>
+              <field name="property_type_id"/>
+              <field name="current_user"/>
+              <field name="property_tag_id" widget="many2many_tags" options="{'color_field':'color'}"/>
+            </group>
+            <group>
+              <field name="image" widget="image" class="oe_avatar"/>
+            </group>
+            <group>
+              <field name="postcode"/>
+              <field name="date_availability"/>
+              <field name="best_offer"/>
+            </group>
+            <group>
+                <field name="salesman_id"/>
+                <field name="buyer_id" domain="[('is_buyer', '=', 'true')]"/>
+            </group>
+          </group>
+          <notebook>
+            <page string="Description">
+              <group>
+                <field name="description"/>
+              </group>
+            </page>
+            <page string="Property Details">
+              <group>
+                <field name="bedrom"/>
+                <field name="expected_price"/>
+                <field name="selling_price"/>
+                <field name="living_area"/>
+                <field name="garden_area"/>
+                <field name="total_area"/>
+              </group>
+
+              <group>
+                <field name="garage"/>
+                <field name="facades"/>
+                <field name="garden"/>
+                <field name="garden_orientation"/>
+              </group>
+            </page>
+            <page name="offers" string="offers">
+              <group>
+                <field name="offer_ids">
+                  <tree editable="True">
+                    <field name="partner_id"/>
+                    <field name="price"/>
+                    <field name="status"/>
+                    <button type="object" string="accepted" name="action_accepted" icon="fa-check" attrs="{'invisible': [('parent.state','=', 'cancel')]}"/>
+                    <button type="object" string="Rejected" name="action_rejected" icon="fa-close" attrs="{'invisible': [('parent.state','=', 'cancel')]}"/>
+                  </tree>
+                </field>
+              </group>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="estate_property_0type_tree" model="ir.ui.view">
+    <field name="name">estate property type Name</field>
+    <field name="model">property.type</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name= "offers"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="estate_property_type_form" model="ir.ui.view">
+    <field name="name">estate property type Name</field>
+    <field name="model">property.type</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name"/>
+
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="estate_property_type_form" model="ir.ui.view">
+    <field name="name">estate property type Name</field>
+    <field name="model">garden.property.type</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name"/>
+
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="estate_property_type_tree" model="ir.ui.view">
+    <field name="name">estate property type Name</field>
+    <field name="model">garden.property.type</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name= "offers"/>
+      </tree>
+    </field>
+  </record>
+
+  <!-- <record id="estate_property_offer_tree" model="ir.ui.view">
+    <field name="name">estate property Name</field>
+    <field name="model">estate.offer</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="price"/>
+        <field name="partner_id"/>
+        <button type="object" string="accepted" name="action_accepted" icon="fa-check"/>
+        <button type="object" string="Rejected" name="action_rejected" icon="fa-close"/>
+        <field name="status"/>
+      </tree>
+    </field>
+  </record> -->
+
+  <record id="estate_property_offer_tree" model="ir.ui.view">
+        <field name="name">Estate Property Offer</field>
+        <field name="model">estate.offer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="price"/>
+                <field name="partner_id"/>
+                <field name="status" decoration-success="status=='accepted'" decoration-danger="status=='rejected'"/>
+            </tree>
+        </field>
+  </record>
+    <!-- Form view for offer -->
+  <record id="estate_property_offer_form" model="ir.ui.view">
+        <field name="name">Estate Property Offer Form</field>
+        <field name="model">estate.offer</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <kanban>
+                        <group>
+                            <field name="price"/>
+                            <field name="partner_id" domain="[('is_buyer','=',True)]"/>
+                            <field name="status"/>
+                        </group>
+                    </kanban>
+                </sheet>
+            </form>
+        </field>
+  </record>
+
+    <!--res  users Property View  -->
+  <record id="estate_property_forminherited" model="ir.ui.view">
+            <field name="name">Res User</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='preferences']" position="after">
+                <page string="Properties">
+                        <field name="property_id"/>
+                </page>
+                </xpath>
+            </field>
+  </record>
+
+<!-- res partner is buyes  -->
+
+  <record id="res_partner_view_form" model="ir.ui.view">
+        <field name="name">res.partner.view.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+           <xpath expr="//group/field[@name='vat']" position="after">
+                <field name="is_buyer" string="Buyer"/>
+            </xpath>
+        </field>
+  </record>
+
+  <record id="estate_property_search" model="ir.ui.view">
+    <field name="name">estate property search</field>
+    <field name="model">estate.properties</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="name"/>
+        
+        <field name="expected_price"/>
+        <filter name="3 or more bedrooms" domain="[('bedrom', '>', 2)]"/>
+        <filter name="garden area available" domain="[('garden_area', '=', True)]"/>      
+        
+        <!-- <filter string="New" name="state" context="{'state':'new'}"/> -->
+        <filter string="New" name="state" domain="[('state','=' ,'new')]"/>
+
+        <group expand="1" string="Group By">
+                    
+                    <filter string="number of bedrooms" name="bedrom" context="{'group_by': 'bedrom'}"/>
+                    <filter string="number of living area" name="living_area" context="{'group_by': 'living_area'}"/>
+
+                    <filter string="My property" name="salesman_id" context="{'group_by': 'salesman_id'}"/>
+                     
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record id="garden_property_search" model="ir.ui.view">
+    <field name="name">garden property search</field>
+    <field name="model">garden.property.type</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="name"/> 
+        
+        
+        <group expand="1" string="Group By">            
+                    <!-- <filter string="my properties" name="partner_id" context="{'group_by': 'partner_id'}"/>
+                       -->
+                    <filter name="create_uid" string="MY PROPERTY" domain="[('create_uid', '=', uid)]" /> 
+                           
+        </group>
+      </search>
+    </field>
+  </record>
+  <!-- kanban views -->
+    <record id="estate_property_kanban" model="ir.ui.view">
+        <field name="name">Estate Property Kanban</field>
+        <field name="model">estate.properties</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="image"/>
+                <field name="id"/>
+                <templates>
+                     <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <t t-if="record.image.raw_value">
+                                <div class="o_kanban_image"> 
+                                    <img t-att-src="kanban_image('estate.properties','image',record.id.raw_value)"/>
+                                </div>
+                            </t>
+                            <t t-else="">
+                                <div class="o_kanban_image"> 
+                                    <img t-att-src="_s + '/base/static/img/avatar_grey.png'" alt="add image"/>
+                                </div>  
+                            </t>
+                            <div class="o_kanban_details">
+                                <strong><field name="name"/></strong>
+                                <ul>
+                                    <li><field name="property_type_id"/></li>
+                                    <li><field name="date_availability"/></li>
+                                    <li><field name="property_tag_id"/></li>
+                                    <li><field name="postcode"/></li>
+                                    <li><field name="current_user"/></li>
+                                    <button class="btn btn-primary" name="open_offers" type="object">
+                                        <li><field name="property_offer_id"/></li>
+                                    </button>
+                                   
+                                    <button name="confirm_offers"  class="btn btn-primary"  type="object"> 
+                                      confirm
+                                    </button>
+                                    
+                                </ul>
+                            </div>       
+                        </div>         
+                    </t>    
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="estate_property_calendar" model="ir.ui.view">
+        <field name="name">Estate Property Calendar</field>
+        <field name="model">estate.properties</field>
+        <field name="arch" type="xml">
+            <calendar string="Property Available" date_start="date_availability" color="id">
+                <field name="name"/>
+            </calendar>
+        </field>
+    </record>
+
+     <record id="estate_property_graph" model="ir.ui.view">
+        <field name="name">Estate Property Graph</field>
+        <field name="model">estate.properties</field>
+        <field name="arch" type="xml">
+            <graph string="Property price">
+                <field name="property_type_id"/>
+                <field name="expected_price" type="measure"/>
+            </graph>
+
+        </field>
+    </record>
+   
+
+</odoo>

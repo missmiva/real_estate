@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="estate_action" model="ir.actions.act_window">
+        <field name="name">Properties</field>
+        <field name="res_model">estate.properties</field>
+        <field name="view_mode">kanban,tree,form,calendar,graph</field>
+        <field name="context">{'search_default_state':'new','search_default_partner_id':1,'is_my_property':True}</field>
+        
+    </record>
+
+    <!-- <record id="lease_action" model="ir.actions.act_window">
+        <field name="name">Lease Propertie</field>
+        <field name="res_model">lease.property</field>
+        <field name="view_mode">tree,form</field>
+        
+    </record>
+     -->
+    <!-- <record id="estate_action_myproperty" model="ir.actions.act_window">
+        <field name="name">Properties</field>
+        <field name="res_model">estate.properties</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{'search_default_partner_id':1}</field>
+    </record> -->
+
+    <record id="estate_property_action" model="ir.actions.act_window">
+        <field name="name">Property type</field>
+        <field name="res_model">property.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="estate_property_action_garden" model="ir.actions.act_window">
+        <field name="name">Garden Property type</field>
+        <field name="res_model">garden.property.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_create_uid':1}</field>
+    </record>
+
+    <record id="estate_offer_action" model="ir.actions.act_window">
+        <field name="name">offers</field>
+        <field name="res_model">estate.offer</field>
+        <field name="view_mode">tree,form</field>
+       <!-- <field name="context">{'search_default_property_ids':'1'} -->
+    </record>
+
+    <menuitem id="estate_menu_root" name="Real_estate"/>
+
+    <menuitem id="estate_first_level_menu" name="Advertisement" parent="estate_menu_root"/>
+    <menuitem id="estate_model_menu_action" parent="estate_first_level_menu" action="estate_action"/> 
+
+    <menuitem id="estate_second_menu" name="Setting_1" parent="estate_menu_root"/>
+    <menuitem id="estate_setting1" parent="estate_first_level_menu" action="estate_property_action"/>
+
+    <menuitem id="estate_third_menu" name="Settings" parent="estate_menu_root"/>
+    <menuitem id="estate_setting" parent="estate_third_menu" action="estate_offer_action"/>
+
+    <menuitem id="estate_properties_menu" name="MyProperies" parent="estate_menu_root"/>
+    <menuitem id="estate_property" parent="estate_properties_menu" action="estate_property_action_garden"/>
+
+    <!-- <menuitem id="lease_properties_menu" name="Lease Properies" parent="estate_menu_root"/>
+    <menuitem id="lease_property" parent="lease_properties_menu" action="lease_action"/> -->
+
+</odoo>

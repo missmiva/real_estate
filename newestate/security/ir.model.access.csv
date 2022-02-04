@@ -1,0 +1,10 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_estate_tag,access_estate_tag,model_estate_tag,base.group_user,1,1,1,1
+access_estate_offer,access_estate_offer,model_estate_offer,base.group_user,1,1,1,1
+newestate.access_garden_property_type,access_garden_property_type,newestate.model_garden_property_type,base.group_user,1,1,1,1
+newestate.access_newproperty_type,access_newproperty_type,newestate.model_newproperty_type,base.group_user,1,1,1,1
+newestate.access_estate_wizard,access_estate_wizard,newestate.model_estate_wizard,base.group_user,1,1,1,1
+access_estate_properties_administrator,access_estate_properties_administrator,model_estate_properties,newestate.group_estate_administrator,1,1,1,1
+access_estate_properties_user,access_estate_properties_user,model_estate_properties,newestate.group_estate_user,1,0,0,0
+access_estate_properties_type_administrator,access_estate_properties_type_administrator,model_property_type,newestate.group_estate_administrator,1,1,1,1
+access_estate_properties_type_user,access_estate_properties_type_user,model_property_type,newestate.group_estate_user,1,0,0,0
